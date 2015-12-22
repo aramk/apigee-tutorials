@@ -3,7 +3,7 @@ exports.profiles = function(grunt){
 			env : grunt.option('env'),     // replace with environment
 			'test' : {
 				apiproxy : 'musicapi-oauth-delegated-authentication',
-					org : 'testmyapi', // replace with organization
+					org : 'aramk', // replace with organization
 					env : 'test',     // replace with environment
 					url_mgmt : 'https://api.enterprise.apigee.com',  // for cloud environments, leave as is
 					username : grunt.option('username'), //|| process.env.ae_username, // pass credentials as arguments as grunt task --username=$ae_username --password=$ae_password
@@ -14,7 +14,7 @@ exports.profiles = function(grunt){
 				},
 				'prod' : {
 					apiproxy : 'musicapi-oauth-delegated-authentication',
-					org : 'testmyapi', // replace with organization
+					org : 'aramk', // replace with organization
 					env : 'prod',     // replace with environment
 					url_mgmt : 'https://api.enterprise.apigee.com',  // for cloud environments, leave as is
 					username : grunt.option('username'), //|| process.env.ae_username, // pass credentials as arguments as grunt task --username=$ae_username --password=$ae_password

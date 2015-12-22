@@ -9,6 +9,11 @@ var expect = require('chai').expect
 var request = require('request');
 var qs = require('querystring');
 
+// Config
+var ORG_NAME = 'aramk';
+var CLIENT_ID = 'oIIEEmaXR4mY9aq4FDA9obIHIBOQjMsD';
+var CLIENT_SECRET = 'xceCzdIvi9smEmx4';
+
 describe('ForecastWeather Public API Test',function() {
   "use strict";
   before(function () {
@@ -23,9 +28,9 @@ describe('ForecastWeather Public API Test',function() {
 
   describe('Generate access token', function() {
     it('you should be able to generate an access token.', function(done) {
-      var options = {url :'https://testmyapi-test.apigee.net/oauth-delegated/generatetoken?',
+      var options = {url :'https://' + ORG_NAME + '-test.apigee.net/oauth-delegated/generatetoken?',
         headers : { 'Content-Type' : 'application/x-www-form-urlencoded' },
-        form: { client_id:'sxnS7SddD6494Akbqk74ej4SmvvqjL0O', grant_type : 'client_credentials'},
+        form: { client_id: CLIENT_ID, client_secret: CLIENT_SECRET, grant_type : 'client_credentials'},
         method : 'POST'};
       var params = { external_access_token: "123456" };
       options.url += qs.stringify(params);
@@ -40,7 +45,7 @@ describe('ForecastWeather Public API Test',function() {
   describe('Access a protected resource', function() {
     var bodyTestCase = {};
     it('you should be able to access music resource with an access token with 200 OK response', function(done) {
-      var options = {url :'https://testmyapi-test.apigee.net/oauth-delegated/music?',
+      var options = {url :'https://' + ORG_NAME + '-test.apigee.net/oauth-delegated/music?',
         headers : { 'Authorization' : 'Bearer ' + tokens.access_token },
         method : 'GET'};
       var params = { func: "getSong", artist : 'radiohead', fmt : 'json' };
